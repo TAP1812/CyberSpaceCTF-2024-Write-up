@@ -2,8 +2,8 @@
 - **Description:** Challenge này có chức năng upload file .zip và giải nén và xem các files đã được giải nén.
 
 - **Review source code:** File `app.py` có 2 routes là `/` và `/files/`:
-    * Đối với route `/` thì chúng ta sẽ quan tâm với phương thức POST <insert ảnh vào đây> 
-    * Sau khi upload file .zip và giải nén thì các file sẽ nằm trong dir `/files/random_uid/`. Nếu ta truy cập vào dir kia thì browser sẽ tự tải các files đã giải nén về. Lý do trình duyệt tự tải các files về là vì server ko set header `Content-Type` cho response nên trình duyệt không biết phải xử lý các files đấy kiểu j => tự tải xuống. <insert ảnh vào đây> 
+    * Đối với route `/` thì chúng ta sẽ quan tâm với phương thức POST [Route index](https://github.com/TAP1812/CyberSpaceCTF-2024-Write-up/img/route_index_zipzone.png) 
+    * Sau khi upload file .zip và giải nén thì các file sẽ nằm trong dir `/files/random_uid/`. Nếu ta truy cập vào dir kia thì browser sẽ tự tải các files đã giải nén về. Lý do trình duyệt tự tải các files về là vì server ko set header `Content-Type` cho response nên trình duyệt không biết phải xử lý các files đấy kiểu j => tự tải xuống. [Route file](https://github.com/TAP1812/CyberSpaceCTF-2024-Write-up/img/route_file_zipzone.png)  
 
 - **Attack Flow:** Đối với những challenges upload files như này thì chúng ta thường có 2 hướng tấn công là:
     * Upload webshell để RCE server , nhưng mà điều này có vẻ không khả thi vì khi ta truy cập vào các files đó thì server sẽ không xử lý => hướng này ko giải được.
