@@ -7,8 +7,8 @@
 
 - **Attack Flow:** Đối với những challenges upload files như này thì chúng ta thường có 2 hướng tấn công là:
     * Upload webshell để RCE server , nhưng mà điều này có vẻ không khả thi vì khi ta truy cập vào các files đó thì server sẽ không xử lý => hướng này ko giải được.
-    * Ngoài ra khi nhắc đến chức năng upload file .zip thì chúng ta nhớ đến 1 case study nổi tiếng là `Symlink`. Trong wu này mình sẽ ko giải thích kỹ , đại khái `Symlink` (Symbolic Link)  là các file trỏ đến các file gốc được khởi tạo thông qua cmd: `ln -s /link/to/root/file tên_file_symlink`. Để kiểm chứng cho giả thuyết này thì mình là upload 1 file zip gồm 1 file `link_to_passwd` trỏ đến `/etc/passwd` <insert ảnh để kiểm chứng giả thuyết>
+    * Ngoài ra khi nhắc đến chức năng upload file .zip thì chúng ta nhớ đến 1 case study nổi tiếng là `Symlink`. Trong wu này mình sẽ ko giải thích kỹ , đại khái `Symlink` (Symbolic Link)  là các file trỏ đến các file gốc được khởi tạo thông qua cmd: `ln -s /link/to/root/file tên_file_symlink`. Để kiểm chứng cho giả thuyết này thì mình là upload 1 file zip gồm 1 file `link_to_passwd` trỏ đến `/etc/passwd` ![Link_to_passwd](https://github.com/TAP1812/CyberSpaceCTF-2024-Write-up/blob/main/img/link_to_passwd.png)
     => Điều đó chứng tỏ chúng ta có thể tận dụng giả thuyết này để đọc flag
 
-- **Exploit:** Bước đầu tiên thì mình cần tìm địa chỉ chính xác của file `flag.txt`. Sau 1 hồi đọc các file `Docker-file`, `*.sh` thì mình đã tìm được địa chỉ chính xác là `/tmp/flag.txt`. Việc còn lại chỉ là zip file là upload. Sau đó thì cta sẽ có được flag:`CSCTF{..........}`
+- **Exploit:** Bước đầu tiên thì mình cần tìm địa chỉ chính xác của file `flag.txt`. Sau 1 hồi đọc các file `Docker-file`, `*.sh` thì mình đã tìm được địa chỉ chính xác là `/tmp/flag.txt`. Việc còn lại chỉ là zip file là upload. Sau đó thì cta sẽ có được flag:`CSCTF{5yml1nk5_4r3_w31rd}`
 
